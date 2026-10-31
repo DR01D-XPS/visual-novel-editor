@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VN Конструктор</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <h1>Конструктор визуальной новеллы</h1>
+        <p>Создавай сцены, ветвления и сразу проверяй результат в вебе.</p>
+      </div>
+      <div class="topbar-actions">
+        <button id="modeToggle" class="btn btn-ghost">Режим: Редактор</button>
+        <button id="exportBtn" class="btn btn-main">Экспорт итоговой страницы</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="panel editor-panel">
+        <section class="block">
+          <div class="block-head">
+            <h2>Сцены</h2>
+            <button id="addSceneBtn" class="btn btn-small">+ Сцена</button>
+          </div>
+          <div id="sceneList" class="scene-list"></div>
+        </section>
+
+        <section class="block">
+          <div class="block-head">
+            <h2>Параметры сцены</h2>
+          </div>
+          <div class="field">
+            <label for="sceneId">ID сцены</label>
+            <input id="sceneId" type="text" />
+          </div>
+          <div class="field">
+            <label for="sceneTitle">Название</label>
+            <input id="sceneTitle" type="text" />
+          </div>
+          <div class="field">
+            <label for="sceneBackgroundFile">Фон сцены (файл)</label>
+            <input id="sceneBackgroundFile" type="file" accept="image/*" />
+          </div>
+          <div class="field">
+            <button id="clearBackgroundBtn" type="button" class="btn btn-small">Очистить фон</button>
+            <div id="backgroundHint" class="hint">Фон не выбран</div>
+          </div>
+          <div class="field">
+            <label for="mainLeftLabel">Левая главная кнопка</label>
+            <input id="mainLeftLabel" type="text" placeholder="Назад" />
+          </div>
+          <div class="field">
+            <label for="mainLeftImageFile">Изображение левой кнопки (файл)</label>
+            <input id="mainLeftImageFile" type="file" accept="image/*" />
+          </div>
+          <div class="field">
+            <label for="mainRightLabel">Правая главная кнопка</label>
+            <input id="mainRightLabel" type="text" placeholder="Далее" />
+          </div>
+          <div class="field">
+            <label for="mainRightImageFile">Изображение правой кнопки (файл)</label>
+            <input id="mainRightImageFile" type="file" accept="image/*" />
+          </div>
+        </section>
+
+        <section class="block">
+          <div class="block-head">
+            <h2>Персонажи</h2>
+            <button id="addCharacterBtn" class="btn btn-small">+ Персонаж</button>
+          </div>
+          <div id="characterEditor" class="stack"></div>
+        </section>
+
+        <section class="block">
+          <div class="block-head">
+            <h2>Текстовые блоки</h2>
+            <button id="addTextBtn" class="btn btn-small">+ Текст</button>
+          </div>
+          <div id="textEditor" class="stack"></div>
+        </section>
+
+        <section class="block">
+          <div class="block-head">
+            <h2>Кнопки и развилки</h2>
+            <button id="addButtonBtn" class="btn btn-small">+ Кнопка</button>
+          </div>
+          <div id="buttonEditor" class="stack"></div>
+        </section>
+
+        <section class="block">
+          <div class="block-head">
+            <h2>Диалоги и выборы</h2>
+            <button id="addStepBtn" class="btn btn-small">+ Реплика</button>
+          </div>
+          <div id="stepEditor" class="stack"></div>
+        </section>
+      </aside>
+
+      <section class="panel preview-panel">
+        <div class="preview-head">
+          <div>
+            <h2>Предпросмотр</h2>
+            <p id="modeHint">Перетаскивай персонажей мышкой прямо в сцене.</p>
+          </div>
+          <div class="preview-tabs" role="tablist" aria-label="Режим предпросмотра">
+            <button id="desktopTab" class="tab-btn active" type="button">Веб 16:9</button>
+            <button id="mobileTab" class="tab-btn" type="button">Телефон 9:16</button>
+          </div>
+        </div>
+        <div id="stageWrap" class="stage-wrap">
+          <div id="stage" class="stage" aria-label="Сцена новеллы"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
